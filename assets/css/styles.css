@@ -1,0 +1,251 @@
+/* =========================================================
+   styles.css
+   Purpose: Shared styling for ALL pages (layout + theme)
+   ========================================================= */
+
+/* --------- Basic reset (prevents weird default spacing) --------- */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+/* --------- Theme tokens (change colors once here) --------- */
+:root{
+  --bg: #060e2c;          /* page background */
+  --surface: #0b1b53;     /* card / section background */
+  --surface-2: #102779;   /* slightly different surface */
+  --text: #e8eefc;        /* main text */
+  --muted: #b7c3e6;       /* secondary text */
+  --accent: #6ea8ff;      /* links / highlights */
+  --border: rgba(255,255,255,.12);
+  --radius: 16px;
+  --shadow: 0 14px 34px rgba(0,0,0,.35);
+}
+
+/* --------- Base typography --------- */
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: radial-gradient(1200px 700px at 20% 10%, rgba(110,168,255,.18), transparent 60%),
+              radial-gradient(900px 600px at 80% 20%, rgba(170,110,255,.14), transparent 60%),
+              var(--bg);
+  line-height: 1.5;
+}
+
+/* --------- Helper container (keeps content centered) --------- */
+.container{
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+
+/* =========================================================
+   Header + Navigation
+   ========================================================= */
+.site-header{
+  position: sticky;   /* keeps nav visible when scrolling */
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  background: rgba(11,18,32,.70);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner{
+  display: flex;              /* puts brand and nav on one row */
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+}
+
+.brand{
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand a{
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: .3px;
+  font-size: 1.1rem;
+}
+
+.brand small{
+  color: var(--muted);
+}
+
+/* --------- Top nav menu --------- */
+.nav ul{
+  list-style: none;   /* removes bullets */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+}
+
+.nav a{
+  display: inline-block;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--muted);
+  border: 1px solid transparent;
+}
+
+.nav a:hover{
+  color: var(--text);
+  border-color: var(--border);
+  background: rgba(255,255,255,.03);
+}
+
+/* --------- Active page link styling --------- */
+.nav a[aria-current="page"]{
+  color: var(--text);
+  border-color: rgba(110,168,255,.45);
+  background: rgba(110,168,255,.12);
+}
+
+/* =========================================================
+   Page layout: sidebar + main content
+   ========================================================= */
+.page{
+  padding: 24px 0 48px;
+}
+/* Sidebar + content layout grid */
+.layout{
+  display: grid;
+  grid-template-columns: 280px 1fr; /* sidebar / content */
+  gap: 18px;
+  align-items: start;
+}
+
+/* Optional: make sidebar sticky */
+.sidebar-slot{
+  position: sticky;
+  top: 84px; /* adjust if your header height differs */
+}
+
+/* Mobile: stack sidebar above content */
+@media (max-width: 900px){
+  .layout{ grid-template-columns: 1fr; }
+  .sidebar-slot{ position: static; }
+}
+
+/* main grid: sidebar + content columns */
+.grid{
+  display: grid;
+  grid-template-columns: 280px 1fr; /* left sidebar, right content */
+  gap: 18px;
+  align-items: start;
+}
+
+/* sidebar card */
+.sidebar{
+  background: linear-gradient(180deg, rgba(255,255,255,.03), transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+
+/* When sidebar is hidden, let content span full width */
+.layout.no-sidebar {
+  grid-template-columns: 1fr;
+}
+
+/* main content area */
+.main{
+  display: grid;
+  gap: 18px;
+}
+
+/* reusable content "block" (card) */
+.block{
+  background: rgba(15,26,48,.75);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+/* a 2-column section inside main content */
+.two-col{
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 14px;
+}
+
+/* =========================================================
+   Components: buttons, forms, lists
+   ========================================================= */
+.button{
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(110,168,255,.45);
+  background: rgba(110,168,255,.14);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.button:hover{
+  background: rgba(110,168,255,.20);
+}
+
+.kv{
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+  color: var(--muted);
+}
+
+.kv span{
+  display: inline-block;
+  padding: 8px 10px;
+  border: 1px dashed rgba(255,255,255,.14);
+  border-radius: 12px;
+  background: rgba(255,255,255,.02);
+}
+
+/* Form styling for contact page */
+.form{
+  display: grid;
+  gap: 12px;
+}
+
+.label{
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+input, textarea{
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(0,0,0,.20);
+  color: var(--text);
+  outline: none;
+}
+
+input:focus, textarea:focus{
+  border-color: rgba(110,168,255,.55);
+  box-shadow: 0 0 0 3px rgba(110,168,255,.18);
+}
+
+footer{
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  padding: 18px 0;
+}
+
+/* =========================================================
+   Responsive: stack sidebar above content on small screens
+   ========================================================= */
+@media (max-width: 900px){
+  .grid{ grid-template-columns: 1fr; }
+  .two-col{ grid-template-columns: 1fr; }
+}
