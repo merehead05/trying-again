@@ -1,41 +1,40 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
+  <!-- Meta: character encoding + mobile scaling -->
   <meta charset="utf-8" />
-  <title>My SPA</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-<!--CSS Links-->
- <link rel="stylesheet" href="./css/globals.css" />
- <link rel="stylesheet" href="./css/components/face-404.css">
- <link rel="stylesheet" href="./css/pages/404.css">
 
-<!--JS Links-->
-<script src="./main.js" defer></script>
+  <!-- Page title shown in browser tab -->
+  <title>I'M LEARNING</title>
+
+  <!--CSS Stylesheet Links-->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/ui.css">
+  
+
+<!--JavaScript Links-->
+   <script src="assets/js/main.js" defer></script>
+   <script src="assets/js/accordion.js" defer></script>
+<script src="assets/js/tabs.js" defer></script>
+<script src="assets/js/toast.js" defer></script>
 
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="site-header__inner">
-      <a href="#/home" class="site-logo">My SPA</a>
+  <!-- Shared layout -->
+<div id="site-header"></div>
 
-      <!-- SPA nav: use hash links -->
-      <nav class="site-nav" aria-label="Primary navigation">
-        <a href="#/home">Home</a>
-        <a href="#/about">About</a>
-        <a href="#/contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <!-- PAGE CONTENT LOADS HERE -->
+<main class="page">
+  <div class="container layout">
+    <aside id="site-sidebar" class="sidebar-slot"></aside>
+    <section id="page-content" class="content-slot"></section>
+  </div>
+</main>
 
-  <main id="app" class="app" role="main" aria-live="polite">
-    <!-- Pages get injected here -->
-  </main>
-
-  <footer class="site-footer">
-    <small>© <span id="year"></span> Your Name</small>
-  </footer>
-
-  <script src="/main.js" defer></script>
+  <!--Footer-->
+  <div id="site-footer"></div>
 </body>
 </html>
