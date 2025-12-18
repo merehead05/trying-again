@@ -1,4 +1,82 @@
-<section class="page-section">
-  <h1>Home</h1>
-  <p>This content is injected into <code>&lt;main id="app"&gt;</code>.</p>
+<section class="page-hero reveal">
+  <h1>UI Test Playground! :)</h1>
+  <p style="color: rgba(232,238,252,.80); max-width: 70ch;">
+    Cards, reveal animations, accordion, tabs, modal, and toast elements for learning how to stack page systems.
+  </p>
 </section>
+
+<section class="grid-3" style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px;">
+  <section class="card hover reveal">
+    <h3>Hover Card</h3>
+    <p>Hover me to see lift + border glow.</p>
+    <button class="button ghost" data-toast="Card clicked!">Toast</button>
+  </section>
+
+  <section class="card hover reveal">
+    <h3>Modal</h3>
+    <p>Open a modal overlay.</p>
+    <button class="button" data-open-modal>Open Modal</button>
+  </section>
+
+  <section class="card hover reveal">
+    <h3>Loading Skeleton</h3>
+    <div class="skeleton" style="height: 14px; width: 70%; margin: 10px 0;"></div>
+    <div class="skeleton" style="height: 14px; width: 90%; margin: 10px 0;"></div>
+    <div class="skeleton" style="height: 14px; width: 55%; margin: 10px 0;"></div>
+  </section>
+</section>
+
+<section class="card reveal" style="margin-top: 18px;">
+  <h2>Accordion</h2>
+
+  <section class="accordion" style="margin-top: 12px;">
+    <button type="button" data-acc-btn aria-expanded="false">
+      What does this accordion do?
+      <span class="chev">▾</span>
+    </button>
+    <div class="panel">
+      <div>
+        <p>This panel expands/collapses with a smooth height animation.</p>
+      </div>
+    </div>
+  </section>
+</section>
+
+<section class="card reveal" data-tabs>
+  <h2>Tabs</h2>
+
+  <div class="tabs" style="margin-top:10px;">
+    <div class="tablist" role="tablist" aria-label="Sample tabs">
+      <button type="button" role="tab" data-tab="overview" aria-selected="true">Overview</button>
+      <button type="button" role="tab" data-tab="details" aria-selected="false">Details</button>
+      <button type="button" role="tab" data-tab="faq" aria-selected="false">FAQ</button>
+    </div>
+
+    <div class="tabpanels">
+      <div class="tabpanel is-active" role="tabpanel" data-panel="overview">
+        <p>Overview content…</p>
+      </div>
+      <div class="tabpanel" role="tabpanel" data-panel="details">
+        <p>Details content…</p>
+      </div>
+      <div class="tabpanel" role="tabpanel" data-panel="faq">
+        <p>FAQ content…</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Modal markup (can live on any page) -->
+<div class="modal-backdrop" data-modal-backdrop>
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Example modal">
+    <div class="modal-header">
+      <h3 style="margin:0;">Example Modal</h3>
+      <button class="modal-close" type="button" data-close-modal>Close</button>
+    </div>
+    <div class="modal-body">
+      <p>Put any content here (forms, previews, confirmations, etc.).</p>
+      <button class="button" type="button" data-close-modal>Done</button>
+    </div>
+  </div>
+</div>
