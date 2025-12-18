@@ -1,0 +1,76 @@
+/* Fully isolated 404 face component */
+.face404 {
+  display: grid;
+  place-items: center;
+}
+
+.face404__svg {
+  display: block;
+  width: 12em;
+  height: auto;
+}
+
+/* animations apply ONLY inside this component */
+.face404__eyes,
+.face404__eye-lid,
+.face404__mouth-left,
+.face404__mouth-right,
+.face404__nose,
+.face404__pupil {
+  animation: eyes 1s 0.3s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.face404__eye-lid,
+.face404__pupil {
+  animation-duration: 4s;
+  animation-delay: 1.3s;
+  animation-iteration-count: infinite;
+}
+
+.face404__eye-lid { animation-name: eye-lid; }
+.face404__mouth-left {
+  animation-name: mouth-left;
+  animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+}
+.face404__mouth-right {
+  animation-name: mouth-right;
+  animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+}
+.face404__nose { animation-name: nose; }
+.face404__pupil { animation-name: pupil; }
+
+/* Animations */
+@keyframes eye-lid {
+  from, 40%, 45%, to { transform: translateY(0); }
+  42.5% { transform: translateY(17.5px); }
+}
+@keyframes eyes {
+  from { transform: translateY(112.5px); }
+  to { transform: translateY(15px); }
+}
+@keyframes pupil {
+  from, 37.5%, 40%, 45%, 87.5%, to {
+    stroke-dashoffset: 0;
+    transform: translate(0, 0);
+  }
+  12.5%, 25%, 62.5%, 75% {
+    stroke-dashoffset: 0;
+    transform: translate(-35px, 0);
+  }
+  42.5% {
+    stroke-dashoffset: 35;
+    transform: translate(0, 17.5px);
+  }
+}
+@keyframes mouth-left {
+  from, 50% { stroke-dashoffset: -102; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes mouth-right {
+  from, 50% { stroke-dashoffset: 102; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes nose {
+  from { transform: translate(0, 0); }
+  to { transform: translate(0, 22.5px); }
+}
